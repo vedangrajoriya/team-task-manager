@@ -1,0 +1,91 @@
+================================================================================
+PROJECT SUBMISSION: TaskFlow (Team Task Manager)
+================================================================================
+
+LIVE PRODUCTION URL: https://team-task-manager-production-2a63.up.railway.app/
+GITHUB REPOSITORY: https://github.com/vedangrajoriya/team-task-manager
+
+================================================================================
+1. PROJECT OVERVIEW
+================================================================================
+TaskFlow is a modern, production-grade SaaS task and project management platform. 
+It is built with a focus on performance, premium aesthetics, and robust 
+Role-Based Access Control (RBAC).
+
+Core Objectives Met:
+- Secure Authentication (Auth.js v5 with Credentials Provider)
+- Strict RBAC (Admin vs. Member permissions)
+- Full Project & Task CRUD operations
+- Relational Database structure using Prisma & PostgreSQL
+- Responsive, premium UI using Next.js 15, Tailwind CSS, and shadcn/ui.
+
+================================================================================
+2. TECHNOLOGY STACK
+================================================================================
+- Frontend: Next.js 15 (App Router), React 19, TypeScript
+- Styling: Tailwind CSS v4, shadcn/ui (base-ui primitives)
+- Backend API: Next.js Server Actions
+- Database: PostgreSQL (hosted on Railway)
+- ORM: Prisma
+- Authentication: Auth.js (NextAuth v5)
+- Validation: Zod v4
+- Visuals: Recharts, Lucide Icons, next-themes
+
+================================================================================
+3. DEMO CREDENTIALS
+================================================================================
+The database is seeded with the following accounts for evaluation:
+
+[ADMIN ACCOUNT]
+Email:    admin@example.com
+Password: password123
+Rights:   Full access. Can create/delete projects, tasks, and manage members.
+
+[MEMBER ACCOUNT]
+Email:    alice@example.com (or bob@example.com)
+Password: password123
+Rights:   View assigned projects only. Can only update status of assigned tasks.
+
+================================================================================
+4. EVALUATION WALKTHROUGH
+================================================================================
+
+--- PART A: Admin Experience (Full Access) ---
+1. Login with the ADMIN ACCOUNT (admin@example.com).
+2. Dashboard: Observe the aggregate statistics, Recharts pie chart, and activity feed.
+3. Projects: 
+   - Navigate to "Projects" -> "New Project". 
+   - Create a project and view it.
+   - Go to the "Members" tab and assign 'Alice' or 'Bob' to the project.
+4. Tasks:
+   - Go to the "Tasks" tab within the project.
+   - Create a task, assign it to Alice, set priority and due date.
+   - Test the live filters (Status, Assignee).
+5. Logout using the top-right avatar menu.
+
+--- PART B: Member Experience (Restricted Access) ---
+1. Login with the MEMBER ACCOUNT (alice@example.com).
+2. Restrictions:
+   - Dashboard only shows data relevant to Alice.
+   - In "Projects", Alice only sees projects she was assigned to.
+   - The "New Project" button is hidden.
+3. Task Interaction:
+   - Open the assigned project. 
+   - Observe that project details and member management are locked.
+   - Locate the assigned task. Change its status to "In Progress".
+   - Security verification: Server actions prevent Alice from modifying tasks 
+     assigned to other users.
+
+================================================================================
+5. PROJECT STRUCTURE SUMMARY
+================================================================================
+- src/app/: Next.js routes, layouts, and public pages.
+- src/app/dashboard/: Protected routes requiring authentication.
+- src/actions/: Server Actions handling database mutations and RBAC validation.
+- src/components/: Reusable UI components (shadcn/ui, forms, charts).
+- src/services/: Read-only data aggregation logic for the dashboard.
+- prisma/schema.prisma: Database models (User, Project, Task, ProjectMember).
+
+================================================================================
+Thank you for reviewing TaskFlow!
+================================================================================
